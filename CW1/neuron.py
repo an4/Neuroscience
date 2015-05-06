@@ -26,13 +26,13 @@ for i in range(1,length) :
         Vtemp = EL
     V.append(Vtemp)
 
-plt.figure(1)
+plt.figure(1, figsize=(10,5))
 plt.plot(time,V)
 plt.title("Integrate And Fire Model")
 plt.xlabel("Time (sec)")
 plt.ylabel("Voltage in the cell (V)")
 plt.ylim(-0.072, -0.038)
-plt.savefig("figure1.png", dpi=300, pad_inches=0.5)
+plt.savefig("figure1.png")
 plt.show()
 
 # Q2 A
@@ -49,13 +49,13 @@ for i in range(1,length) :
         Vtemp = EL
     V.append(Vtemp)
 
-plt.figure(2)
+plt.figure(2, figsize=(10,5))
 plt.plot(time,V)
 plt.title("Integrate And Fire Model")
 plt.xlabel("Time (sec)")
 plt.ylabel("Voltage in the cell (V)")
 plt.ylim(-0.072, -0.038)
-plt.savefig("figure2.png", dpi=300, pad_inches=0.5)
+plt.savefig("figure2.png")
 plt.show()
 
 # Q3
@@ -76,13 +76,13 @@ for amp in amps :
         V.append(Vtemp)
     spikes.append(spike)
 
-plt.figure(3)
+plt.figure(3, figsize=(10,5))
 plt.plot(amps,spikes)
 plt.title("Dependance Between Firing Rate And Current's Amplitude")
 plt.xlabel("Current Amplitude [nA]")
 plt.ylabel("Firing Rate - Spikes per second")
 plt.xlim(2.0, 5.0)
-plt.savefig("figure3.png", dpi=300, pad_inches=0.5)
+plt.savefig("figure3.png")
 plt.show()
 
 # Q4
@@ -131,7 +131,7 @@ for t in time[1:] :
         V_two[-1] = Vreset
         t_two = t
 
-plt.figure(4)
+plt.figure(4, figsize=(10,5))
 one, = plt.plot(time,V_one, color='r')
 two, = plt.plot(time,V_two, color='b')
 plt.legend([one, two], ['First Neuron', 'Second Neuron'])
@@ -139,7 +139,7 @@ plt.title("Integrate and Fire Model of two neurons with excitatory synapses.")
 plt.xlabel("Time (sec)")
 plt.ylabel("Voltage in the cell (V)")
 plt.ylim(-0.083, -0.045)
-plt.savefig("figure4.png", dpi=300, pad_inches=0.5)
+plt.savefig("figure4.png")
 plt.show()
 
 # Q4b
@@ -170,7 +170,7 @@ for i in range(1, length) :
         V_two[-1] = Vreset
         t_two = t
 
-plt.figure(5)
+plt.figure(5, figsize=(10,5))
 one, = plt.plot(time,V_one, color='r')
 two, = plt.plot(time,V_two, color='b')
 plt.legend([one, two], ['First Neuron', 'Second Neuron'])
@@ -178,7 +178,7 @@ plt.title("Integrate and Fire Model of two neurons with inhibatory synapses.")
 plt.xlabel("Time (sec)")
 plt.ylabel("Voltage in the cell (V)")
 plt.ylim(-0.083, -0.045)
-plt.savefig("figure5.png", dpi=300, pad_inches=0.5)
+plt.savefig("figure5.png")
 plt.show()
 
 # Q5
