@@ -32,7 +32,7 @@ plt.title("Integrate And Fire Model")
 plt.xlabel("Time (sec)")
 plt.ylabel("Voltage in the cell (V)")
 plt.ylim(-0.072, -0.038)
-plt.savefig("figure1.png")
+plt.savefig("figure1.eps")
 plt.show()
 
 # Q2 A
@@ -55,7 +55,7 @@ plt.title("Integrate And Fire Model")
 plt.xlabel("Time (sec)")
 plt.ylabel("Voltage in the cell (V)")
 plt.ylim(-0.072, -0.038)
-plt.savefig("figure2.png")
+plt.savefig("figure2.eps")
 plt.show()
 
 # Q3
@@ -82,7 +82,7 @@ plt.title("Dependance Between Firing Rate And Current's Amplitude")
 plt.xlabel("Current Amplitude [nA]")
 plt.ylabel("Firing Rate - Spikes per second")
 plt.xlim(2.0, 5.0)
-plt.savefig("figure3.png")
+plt.savefig("figure3.eps")
 plt.show()
 
 # Q4
@@ -139,7 +139,7 @@ plt.title("Integrate and Fire Model of two neurons with excitatory synapses.")
 plt.xlabel("Time (sec)")
 plt.ylabel("Voltage in the cell (V)")
 plt.ylim(-0.083, -0.045)
-plt.savefig("figure4.png")
+plt.savefig("figure4.eps")
 plt.show()
 
 # Q4b
@@ -178,7 +178,7 @@ plt.title("Integrate and Fire Model of two neurons with inhibatory synapses.")
 plt.xlabel("Time (sec)")
 plt.ylabel("Voltage in the cell (V)")
 plt.ylim(-0.083, -0.045)
-plt.savefig("figure5.png")
+plt.savefig("figure5.eps")
 plt.show()
 
 # Q5
@@ -201,12 +201,3 @@ for t in time :
     if Vtemp > Vth :
         Vtemp = EL
     V.append(Vtemp)
-
-# plt.figure(5)
-# plt.plot(time,V)
-# plt.title("Integrate And Fire Model")
-# plt.xlabel("Time (sec)")
-# plt.ylabel("Voltage in the cell (V)")
-# plt.ylim(-0.072, -0.038)
-# plt.savefig("figure6.png", dpi=300, pad_inches=0.5)
-# plt.show()
