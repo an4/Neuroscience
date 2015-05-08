@@ -23,7 +23,7 @@ def firingRate(N, i) :
     for n in N :
         sec.append(int(n/10000))
 
-    name = "firintrate%d.eps" % i
+    name = "firingrate%d.eps" % i
 
     plt.figure(figsize=(20,5))
     plt.hist(sec, bins=bins, histtype='bar')
@@ -34,7 +34,6 @@ def firingRate(N, i) :
     plt.title(title)
     plt.savefig(name)
     plt.show()
-
 
 ################################################################################
 # Generate plots showing positions in which each neuron fired.                 #
@@ -93,13 +92,35 @@ def position(N1, N2, N3, N4, N, T, X, Y) :
     blue = mpatches.Patch(color='blue', label='Neuron 4')
     plt.legend(handles=[red, yellow, green, blue])
     plt.axis([0, 180, 0, 180])
-    plt.xlabel("X position")
-    plt.ylabel("Y position")
+    plt.xlabel("X coordinate")
+    plt.ylabel("Y coordinate")
     plt.title("Positions in which each neuron fired.")
     plt.savefig("positions.eps")
     plt.show()
 
     return (P1, P2, P3, P4)
+
+################################################################################
+# Plot auto-correlograms of neurons                                            #
+################################################################################
+def autocorrelogram(A, i) :
+    diff = []
+
+    for a in A :
+        for b in A :
+            diff.append(a-b)
+
+    title = "Autocorrelogram for Neuron %d" % i
+    name = "autocorrelogram%d.eps" % i
+
+    plt.figure()
+    plt.hist(diff, bins=100, histtype='bar', color='green')
+    plt.title(title)
+    plt.xlabel("Time difference 1/10000 sec")
+    plt.ylabel("Coefficient")
+    plt.savefig(name)
+    plt.show()
+
 
 ################################################################################
 if ( __name__ == "__main__" ) :
@@ -122,9 +143,14 @@ if ( __name__ == "__main__" ) :
 
     N = N1 + N2 + N3 + N4
 
-    firingRate(N1, 1)
-    firingRate(N2, 2)
-    firingRate(N3, 3)
-    firingRate(N4, 4)
+    # firingRate(N1, 1)
+    # firingRate(N2, 2)
+    # firingRate(N3, 3)
+    # firingRate(N4, 4)
 
     # P1, P2, P3, P4 = position(N1, N2, N3, N4, N, T, X, Y)
+
+    # autocorrelogram(N1, 1)
+    # autocorrelogram(N2, 2)
+    # autocorrelogram(N3, 3)
+    # autocorrelogram(N4, 4)
