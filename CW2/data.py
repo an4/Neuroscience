@@ -114,13 +114,33 @@ def autocorrelogram(A, i) :
     name = "autocorrelogram%d.eps" % i
 
     plt.figure()
-    plt.hist(diff, bins=100, histtype='bar', color='green')
+    plt.hist(diff, bins=50, histtype='bar', color='green')
     plt.title(title)
     plt.xlabel("Time difference 1/10000 sec")
     plt.ylabel("Coefficient")
     plt.savefig(name)
     plt.show()
 
+################################################################################
+# Plot cross-correlograms of pairs of neurons                                  #
+################################################################################
+def crosscorrelogram(A, i, B, j) :
+    diff = []
+
+    for a in A :
+        for b in B :
+            diff.append(a-b)
+
+    title = "Cross-correlogram between Neuron %d and Neuron %d" % (i,j)
+    name = "crosscorrelogram%d%d.eps" % (i,j)
+
+    plt.figure()
+    plt.hist(diff, bins=30, histtype='bar', color='blue')
+    plt.title(title)
+    plt.xlabel("Time difference 1/10000 sec")
+    plt.ylabel("Coefficient")
+    plt.savefig(name)
+    plt.show()
 
 ################################################################################
 if ( __name__ == "__main__" ) :
@@ -150,7 +170,20 @@ if ( __name__ == "__main__" ) :
 
     # P1, P2, P3, P4 = position(N1, N2, N3, N4, N, T, X, Y)
 
-    # autocorrelogram(N1, 1)
-    # autocorrelogram(N2, 2)
-    # autocorrelogram(N3, 3)
-    # autocorrelogram(N4, 4)
+    autocorrelogram(N1, 1)
+    autocorrelogram(N2, 2)
+    autocorrelogram(N3, 3)
+    autocorrelogram(N4, 4)
+
+    # crosscorrelogram(N1, 1, N2, 2)
+    # crosscorrelogram(N1, 1, N3, 3)
+    # crosscorrelogram(N1, 1, N4, 4)
+    # crosscorrelogram(N2, 2, N1, 1)
+    # crosscorrelogram(N2, 2, N3, 3)
+    # crosscorrelogram(N2, 2, N4, 4)
+    # crosscorrelogram(N3, 3, N1, 1)
+    # crosscorrelogram(N3, 3, N2, 2)
+    # crosscorrelogram(N3, 3, N4, 4)
+    # crosscorrelogram(N4, 4, N1, 1)
+    # crosscorrelogram(N4, 4, N2, 2)
+    # crosscorrelogram(N4, 4, N3, 3)
