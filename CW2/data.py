@@ -92,9 +92,11 @@ def position(N1, N2, N3, N4, N, T, X, Y) :
     blue = mpatches.Patch(color='blue', label='Neuron 4')
     plt.legend(handles=[red, yellow, green, blue])
     plt.axis([0, 180, 0, 180])
+    # plt.axis([0, 170, 0, 130])
     plt.xlabel("X coordinate")
     plt.ylabel("Y coordinate")
     plt.title("Positions in which each neuron fired.")
+    # plt.title("Positions in which neuron 4 fired.")
     plt.savefig("positions.eps")
     plt.show()
 
@@ -170,10 +172,10 @@ if ( __name__ == "__main__" ) :
 
     # P1, P2, P3, P4 = position(N1, N2, N3, N4, N, T, X, Y)
 
-    autocorrelogram(N1, 1)
-    autocorrelogram(N2, 2)
-    autocorrelogram(N3, 3)
-    autocorrelogram(N4, 4)
+    # autocorrelogram(N1, 1)
+    # autocorrelogram(N2, 2)
+    # autocorrelogram(N3, 3)
+    # autocorrelogram(N4, 4)
 
     # crosscorrelogram(N1, 1, N2, 2)
     # crosscorrelogram(N1, 1, N3, 3)
