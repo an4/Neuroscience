@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.patches as mpatches
+from pylab import pcolor, show, colorbar, xticks, yticks, matshow
 
 ################################################################################
 # Calculate firing rates of each neuron (in each 1 second interval), and plot  #
@@ -69,19 +70,19 @@ def position(N1, N2, N3, N4, N, T, X, Y) :
         for n1 in N1 :
             if prev_t <= n1 <= t :
                 plt.plot((prev_x/X_range)*X_maze, (prev_y/Y_range)*Y_maze, 'r.')
-                P1.append([prev_x, prev_y])
+                P1.append([int((prev_x/X_range)*X_maze), int((prev_y/Y_range)*Y_maze)])
         for n2 in N2 :
             if prev_t <= n2 <= t :
                 plt.plot((prev_x/X_range)*X_maze, (prev_y/Y_range)*Y_maze, 'y.')
-                P2.append([prev_x, prev_y])
+                P2.append([int((prev_x/X_range)*X_maze), int((prev_y/Y_range)*Y_maze)])
         for n3 in N3 :
             if prev_t <= n3 <= t :
                 plt.plot((prev_x/X_range)*X_maze, (prev_y/Y_range)*Y_maze, 'g.')
-                P3.append([prev_x, prev_y])
+                P3.append([int((prev_x/X_range)*X_maze), int((prev_y/Y_range)*Y_maze)])
         for n4 in N4 :
             if prev_t <= n4 <= t :
                 plt.plot((prev_x/X_range)*X_maze, (prev_y/Y_range)*Y_maze, 'b.')
-                P4.append([prev_x, prev_y])
+                P4.append([int((prev_x/X_range)*X_maze), int((prev_y/Y_range)*Y_maze)])
         prev_t = t
         prev_x = x
         prev_y = y
@@ -98,6 +99,91 @@ def position(N1, N2, N3, N4, N, T, X, Y) :
     plt.title("Positions in which each neuron fired.")
     # plt.title("Positions in which neuron 4 fired.")
     plt.savefig("positions.eps")
+    plt.show()
+
+
+    P1 = []
+    P2 = []
+    P3 = []
+    P4 = []
+    prev_t = T[0]
+    prev_x = X[0]
+    prev_y = Y[0]
+
+    plt.figure()
+    for t, x, y in zip(T, X, Y) :
+        for n1 in N1 :
+            if prev_t <= n1 <= t :
+                plt.plot((prev_x/X_range)*X_maze, (prev_y/Y_range)*Y_maze, 'r.')
+                P1.append([int((prev_x/X_range)*X_maze), int((prev_y/Y_range)*Y_maze)])
+        prev_t = t
+        prev_x = x
+        prev_y = y
+    plt.axis([0, 170, 0, 130])
+    plt.xlabel("X coordinate")
+    plt.ylabel("Y coordinate")
+    plt.title("Positions in which neuron 1 fired.")
+    plt.savefig("positions1.eps")
+    plt.show()
+
+    prev_t = T[0]
+    prev_x = X[0]
+    prev_y = Y[0]
+
+    plt.figure()
+    for t, x, y in zip(T, X, Y) :
+        for n2 in N2 :
+            if prev_t <= n2 <= t :
+                plt.plot((prev_x/X_range)*X_maze, (prev_y/Y_range)*Y_maze, 'y.')
+                P1.append([int((prev_x/X_range)*X_maze), int((prev_y/Y_range)*Y_maze)])
+        prev_t = t
+        prev_x = x
+        prev_y = y
+    plt.axis([0, 170, 0, 130])
+    plt.xlabel("X coordinate")
+    plt.ylabel("Y coordinate")
+    plt.title("Positions in which neuron 2 fired.")
+    plt.savefig("positions2.eps")
+    plt.show()
+
+    prev_t = T[0]
+    prev_x = X[0]
+    prev_y = Y[0]
+
+    plt.figure()
+    for t, x, y in zip(T, X, Y) :
+        for n3 in N3 :
+            if prev_t <= n3 <= t :
+                plt.plot((prev_x/X_range)*X_maze, (prev_y/Y_range)*Y_maze, 'g.')
+                P1.append([int((prev_x/X_range)*X_maze), int((prev_y/Y_range)*Y_maze)])
+        prev_t = t
+        prev_x = x
+        prev_y = y
+    plt.axis([0, 170, 0, 130])
+    plt.xlabel("X coordinate")
+    plt.ylabel("Y coordinate")
+    plt.title("Positions in which neuron 3 fired.")
+    plt.savefig("positions3.eps")
+    plt.show()
+
+    prev_t = T[0]
+    prev_x = X[0]
+    prev_y = Y[0]
+
+    plt.figure()
+    for t, x, y in zip(T, X, Y) :
+        for n4 in N4 :
+            if prev_t <= n4 <= t :
+                plt.plot((prev_x/X_range)*X_maze, (prev_y/Y_range)*Y_maze, 'b.')
+                P1.append([int((prev_x/X_range)*X_maze), int((prev_y/Y_range)*Y_maze)])
+        prev_t = t
+        prev_x = x
+        prev_y = y
+    plt.axis([0, 170, 0, 130])
+    plt.xlabel("X coordinate")
+    plt.ylabel("Y coordinate")
+    plt.title("Positions in which neuron 4 fired.")
+    plt.savefig("positions4.eps")
     plt.show()
 
     return (P1, P2, P3, P4)
@@ -145,6 +231,8 @@ def crosscorrelogram(A, i, B, j) :
     plt.show()
 
 ################################################################################
+
+################################################################################
 if ( __name__ == "__main__" ) :
     f = open("neuron1.csv")
     N1 = map( lambda x: int(x.strip()), f.readlines() )
@@ -165,27 +253,27 @@ if ( __name__ == "__main__" ) :
 
     N = N1 + N2 + N3 + N4
 
-    # firingRate(N1, 1)
-    # firingRate(N2, 2)
-    # firingRate(N3, 3)
-    # firingRate(N4, 4)
+    firingRate(N1, 1)
+    firingRate(N2, 2)
+    firingRate(N3, 3)
+    firingRate(N4, 4)
 
-    # P1, P2, P3, P4 = position(N1, N2, N3, N4, N, T, X, Y)
+    P1, P2, P3, P4 = position(N1, N2, N3, N4, N, T, X, Y)
 
-    # autocorrelogram(N1, 1)
-    # autocorrelogram(N2, 2)
-    # autocorrelogram(N3, 3)
-    # autocorrelogram(N4, 4)
+    autocorrelogram(N1, 1)
+    autocorrelogram(N2, 2)
+    autocorrelogram(N3, 3)
+    autocorrelogram(N4, 4)
 
-    # crosscorrelogram(N1, 1, N2, 2)
-    # crosscorrelogram(N1, 1, N3, 3)
-    # crosscorrelogram(N1, 1, N4, 4)
-    # crosscorrelogram(N2, 2, N1, 1)
-    # crosscorrelogram(N2, 2, N3, 3)
-    # crosscorrelogram(N2, 2, N4, 4)
-    # crosscorrelogram(N3, 3, N1, 1)
-    # crosscorrelogram(N3, 3, N2, 2)
-    # crosscorrelogram(N3, 3, N4, 4)
-    # crosscorrelogram(N4, 4, N1, 1)
-    # crosscorrelogram(N4, 4, N2, 2)
-    # crosscorrelogram(N4, 4, N3, 3)
+    crosscorrelogram(N1, 1, N2, 2)
+    crosscorrelogram(N1, 1, N3, 3)
+    crosscorrelogram(N1, 1, N4, 4)
+    crosscorrelogram(N2, 2, N1, 1)
+    crosscorrelogram(N2, 2, N3, 3)
+    crosscorrelogram(N2, 2, N4, 4)
+    crosscorrelogram(N3, 3, N1, 1)
+    crosscorrelogram(N3, 3, N2, 2)
+    crosscorrelogram(N3, 3, N4, 4)
+    crosscorrelogram(N4, 4, N1, 1)
+    crosscorrelogram(N4, 4, N2, 2)
+    crosscorrelogram(N4, 4, N3, 3)
